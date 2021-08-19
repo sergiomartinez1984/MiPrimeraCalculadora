@@ -14,7 +14,7 @@ public class MiPrimeraCalculadora extends javax.swing.JFrame {
     public MiPrimeraCalculadora() {
         initComponents();
         temp = 0;
-        pantalla.setText(" ");
+        pantalla.setText("");
         
         this.setLocationRelativeTo(null);/*esto hace que aparezca la calculadora centrada en la pantalla*/
     }
@@ -356,9 +356,13 @@ public class MiPrimeraCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_boton9ActionPerformed
 
     private void botonSumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSumaActionPerformed
-        temp = temp + parseDouble(pantalla.getText());
-        pantalla.setText("");
-        sign = "+";
+        try{
+            temp = temp + parseDouble(pantalla.getText());
+            pantalla.setText("");
+            sign = "+";
+        }catch(Exception e){
+            System.out.print(e.getMessage());
+        }
     }//GEN-LAST:event_botonSumaActionPerformed
 
     private void botonIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIgualActionPerformed
@@ -373,10 +377,6 @@ public class MiPrimeraCalculadora extends javax.swing.JFrame {
         }
         if(sign.equals("/")){
             temp = temp / parseDouble(pantalla.getText());
-        }
-        if(sign.equals("Raiz")){
-            temp = Math.sqrt(temp);
-        
         }
         
         pantalla.setText("");
@@ -404,17 +404,14 @@ public class MiPrimeraCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_botonDivisionActionPerformed
 
     private void botonPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPuntoActionPerformed
-        
         if(!(this.pantalla.getText().contains("."))){
             this.pantalla.setText(this.pantalla.getText()+ ".");
         }
     }//GEN-LAST:event_botonPuntoActionPerformed
 
     private void botonRaizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRaizActionPerformed
-       
         temp = parseDouble(pantalla.getText());
-        pantalla.setText("");
-        sign = "Raiz";
+        pantalla.setText("" + Math.sqrt(temp));
     }//GEN-LAST:event_botonRaizActionPerformed
 
     /**
